@@ -1,12 +1,11 @@
 export default function () {
+    const selector = document.querySelector(".selector");
+
     let lists = ["My List"];
 
-    function selectorRender(){
-        const content = document.querySelector(".content");
-
-        const selector = document.createElement("div");
-        selector.classList.add("selector");
-
+    function selectorRender(){  
+        selector.innerHTML = "";
+                        
         const selectorLabel = document.createElement("label");
         selectorLabel.htmlFor = "lists";
         selectorLabel.innerHTML = "Available lists:"
@@ -15,7 +14,7 @@ export default function () {
         select.setAttribute("name", "lists");
         select.id = "lists";
         const defaultOption = document.createElement("option");
-        defaultOption.value = "My List";
+        defaultOption.value = lists[0];
         defaultOption.innerHTML = lists[0];
 
         const addList = document.createElement("button");
@@ -24,8 +23,7 @@ export default function () {
         addList.innerHTML = "+";
 
         select.append(defaultOption);
-        selector.append(selectorLabel, select, addList);
-        content.append(selector);
+        selector.append(selectorLabel, select, addList);    
     };
 
     return {

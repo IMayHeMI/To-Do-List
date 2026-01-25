@@ -1,9 +1,22 @@
 import "./styles.css";
-import selector from "./selector";
+import Select from "./selector";
+import List from "./list";
 
-// window.onload(selector());
+const selector = new Select();
+const todoList = new List();
 
-// const header = document.querySelector(".header");
-// const content = document.querySelector(".content");
-// const selector = document.querySelector(".selector");
-// const list = document.querySelector(".list");
+function render(){
+    selector.selectorRender();
+    todoList.todoListRender();
+
+    const form = document.getElementById("todoForm");
+    const input = document.getElementById("newTodoInput");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        todoList.addTodo(input);
+        console.log(todoList.todos);
+    });
+}
+
+window.onload = render;
