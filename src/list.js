@@ -43,8 +43,15 @@ export default function() {
         todoListEl.innerHTML = "";
 
         todos.forEach((todo) => {
+            const checkBox = document.createElement("input");
+            checkBox.type = "checkbox";
+
             const li = document.createElement("li");
             li.textContent = todo.text;
+
+            const deleteTodo = document.createElement("div");
+            deleteTodo.classList.add("deleteTodo");
+            li.append(deleteTodo);
             todoListEl.append(li);
         });
     }
@@ -55,7 +62,8 @@ export default function() {
 
         todos.push({
             id: Date.now(),
-            text,
+            text,  
+            priority: "non-urgent",
             done: false,
         });  
         
