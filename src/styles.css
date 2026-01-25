@@ -4,11 +4,17 @@
 
 .header {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.selector {
+    margin: 1em;
 }
 
 .selector label {
     font-size: 1.5rem;
+    margin-right: 0.2em;
 }
 
 .selector select {
@@ -36,4 +42,25 @@
 .selector .addList:hover {
     cursor: pointer;
     color: black;
+}
+
+#newTodoInput {
+    font-size: 1.3rem;
+    margin: 0em 1em;
+}
+
+#todoList {
+    list-style: none;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+li {
+    margin: 10px;
+    font-size: 1.3rem;
+}
+
+#addTodo {
+    font-size: 1.3rem;
+    margin: 0px -10px;
 }
