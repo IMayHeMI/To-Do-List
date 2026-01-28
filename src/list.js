@@ -6,6 +6,7 @@ export default function() {
     let todoForm;
     let todoListEl;
     let newTodoInput;
+    let idCounter = 0;
 
     function todoListRender() {           
         if (!listContainer.parentNode){
@@ -28,47 +29,55 @@ export default function() {
             todoForm.append(newTodoInput, addTaskBtn);
 
 
-            todoListEl = document.createElement("ul");
+            todoListEl = document.createElement("div");
             todoListEl.id = "todoList";
 
             listContainer.append(todoForm, todoListEl); 
-        }
-           
-        renderTodos();
+        }          
     };
 
-    function renderTodos() {
+    function renderTodo() {
         if(!todoListEl) return;
+        
+        const todoContainer = document.createElement("div");
+        todoContainer.classList.add("todoContainer");
 
-        todoListEl.innerHTML = "";
+        const isDone = document.createElement("input");
+        isDone.type = "checkbox";
 
-        todos.forEach((todo) => {
-            const checkBox = document.createElement("input");
-            checkBox.type = "checkbox";
+        const todoTitle = document.createElement("div");
+        todoTitle.classList.add("todoTitle");
+        todoTitle.textContent = todos[todos.length - 1].title;
 
-            const li = document.createElement("li");
-            li.textContent = todo.text;
-
-            const deleteTodo = document.createElement("div");
-            deleteTodo.classList.add("deleteTodo");
-            li.append(deleteTodo);
-            todoListEl.append(li);
+        const todoDescription = document.createElement("textarea");
+        todoDescription.id = `textarea-${++idCounter}`;
+        todoDescription.setAttribute("rows", "1");
+        todoDescription.placeholder = "description...";
+        todoDescription.classList.add("todoDescription");
+        todoDescription.addEventListener('input', () => {
+            todoDescription.style.height = 'auto'
+            todoDescription.style.height = todoDescription.scrollHeight + 'px'
         });
+
+        const deleteTodo = document.createElement("div");
+        deleteTodo.classList.add("deleteTodo");
+        todoContainer.append(isDone, todoTitle, todoDescription, deleteTodo);
+        todoListEl.append(todoContainer);        
     }
 
     function addTodo(input) { 
-        const text = input.value.trim();
-        if (!text) return;
+        const title = input.value.trim();
+        if (!title) return;
 
         todos.push({
             id: Date.now(),
-            text,  
-            priority: "non-urgent",
+            title,  
+            description: "",
             done: false,
         });  
         
         input.value = "";
-        renderTodos();
+        renderTodo();
     }
 
     return {

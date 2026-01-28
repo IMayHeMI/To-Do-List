@@ -7,9 +7,11 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .content {
+    width: 90ch;
     flex: 1;
 }
 
@@ -65,16 +67,34 @@ body {
 }
 
 #todoList {
-    list-style: none;
-    padding: 10px;
-    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 5px;
 }
 
-li {
-    margin: 10px;
-    font-size: 1.4rem;
+.todoContainer {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid black;
+    padding: 0 1em;
+}
+
+.todoTitle {
+    font-size: 1.2rem;    
+    font-weight: bold;
+}
+
+.todoDescription {
+    font-size: 1rem;
+    width: 50%;
+    height: auto;
+    resize: none;
+    overflow: hidden;
+    border: none;
+    outline: none;
 }
 
 #addTodo {
@@ -84,12 +104,13 @@ li {
 
 .deleteTodo {
     width: 23px;
-    max-height: 23px;
+    height: 23px;
     background-image: url("assets/delete-icon.png");
     background-repeat: no-repeat;
     background-position: center;  
     background-size: cover;   
     padding: auto;
+    margin: 5px;
 }
 
 
