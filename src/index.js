@@ -15,7 +15,6 @@ function render(){
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         todoList.addTodo(input);
-        console.log(todoList.todos);
     });
 }
 

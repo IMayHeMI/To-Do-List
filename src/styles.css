@@ -113,6 +113,10 @@ body {
     margin: 5px;
 }
 
+.deleteTodo:hover {
+    cursor: pointer;
+}
+
 
 
 
